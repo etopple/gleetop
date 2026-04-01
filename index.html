@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GleeTop Technology — We Sing Your Problems Away!</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Bangers&family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --glee-red: #C41E3A;
+    --glee-gold: #FFD700;
+    --glee-pink: #FF69B4;
+    --glee-blue: #1E90FF;
+    --glee-dark: #1a1a2e;
+    --glee-white: #fff;
+    --glee-yellow: #FFF44F;
+    --spotlight: radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.3) 0%, transparent 60%);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--glee-dark);
+    color: var(--glee-white);
+    overflow-x: hidden;
+    cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='28' font-size='28'>🎤</text></svg>") 4 4, auto;
+  }
+
+  /* ===== MARQUEE BANNER ===== */
+  .marquee-banner {
+    background: var(--glee-red);
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    z-index: 100;
+    border-bottom: 3px solid var(--glee-gold);
+  }
+  .marquee-text {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: var(--glee-gold);
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background:
+      var(--spotlight),
+      radial-gradient(ellipse at 20% 80%, rgba(255,105,180,0.2) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(30,144,255,0.2) 0%, transparent 50%),
+      linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 3px,
+      rgba(255,255,255,0.02) 3px,
+      rgba(255,255,255,0.02) 4px
+    );
+    pointer-events: none;
+  }
+
+  /* Stage lights */
+  .stage-light {
+    position: absolute;
+    width: 300px;
+    height: 600px;
+    opacity: 0.15;
+    filter: blur(40px);
+    animation: lightSway 4s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  .stage-light.left {
+    left: 5%;
+    top: -100px;
+    background: var(--glee-pink);
+    transform-origin: top center;
+  }
+  .stage-light.right {
+    right: 5%;
+    top: -100px;
+    background: var(--glee-blue);
+    animation-delay: -2s;
+    transform-origin: top center;
+  }
+  .stage-light.center {
+    left: 50%;
+    top: -100px;
+    transform: translateX(-50%);
+    background: var(--glee-gold);
+    animation-delay: -1s;
+    animation-duration: 3s;
+  }
+  @keyframes lightSway {
+    0% { transform: rotate(-8deg); }
+    100% { transform: rotate(8deg); }
+  }
+
+  .logo-container {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .glee-logo {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(4rem, 12vw, 10rem);
+    color: var(--glee-gold);
+    text-shadow:
+      0 0 20px rgba(255,215,0,0.6),
+      0 0 40px rgba(255,215,0,0.3),
+      0 0 80px rgba(255,215,0,0.15),
+      3px 3px 0 var(--glee-red);
+    line-height: 1;
+    animation: glowPulse 2s ease-in-out infinite alternate;
+    position: relative;
+    z-index: 2;
+  }
+
+  .glee-logo .top-text {
+    font-family: 'Bangers', cursive;
+    font-size: 0.35em;
+    display: block;
+    color: var(--glee-white);
+    text-shadow: 2px 2px 0 var(--glee-red);
+    letter-spacing: 8px;
+    animation: none;
+  }
+
+  @keyframes glowPulse {
+    0% { text-shadow: 0 0 20px rgba(255,215,0,0.6), 0 0 40px rgba(255,215,0,0.3), 3px 3px 0 var(--glee-red); }
+    100% { text-shadow: 0 0 30px rgba(255,215,0,0.8), 0 0 60px rgba(255,215,0,0.5), 0 0 100px rgba(255,215,0,0.2), 3px 3px 0 var(--glee-red); }
+  }
+
+  .tagline {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(1.2rem, 3.5vw, 2.5rem);
+    color: var(--glee-pink);
+    letter-spacing: 3px;
+    margin-top: 0.5rem;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+  }
+
+  .sub-tagline {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.7);
+    margin-top: 1rem;
+    font-style: italic;
+    max-width: 600px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 3rem;
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, var(--glee-red), #e8234a);
+    color: var(--glee-white);
+    border: 3px solid var(--glee-gold);
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(196,30,58,0.4);
+    animation: bounceIn 0.6s ease-out 1s both;
+  }
+  .cta-btn:hover {
+    transform: scale(1.08) rotate(-2deg);
+    box-shadow: 0 6px 30px rgba(196,30,58,0.6);
+    background: linear-gradient(135deg, #e8234a, var(--glee-red));
+  }
+
+  @keyframes bounceIn {
+    0% { opacity: 0; transform: scale(0.3); }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* Music notes floating */
+  .notes-container {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .music-note {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0;
+    animation: floatNote 6s ease-in infinite;
+  }
+  @keyframes floatNote {
+    0% { opacity: 0; transform: translateY(100vh) rotate(0deg); }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.7; }
+    100% { opacity: 0; transform: translateY(-20vh) rotate(360deg); }
+  }
+
+  /* ===== TEAM GRID (VIDEO CALL STYLE) ===== */
+  .team-section {
+    padding: 4rem 2rem;
+    background:
+      linear-gradient(180deg, #0f3460 0%, #1a1a2e 30%, #1a1a2e 100%);
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--glee-gold);
+    margin-bottom: 0.5rem;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 0 var(--glee-red);
+  }
+
+  .section-subtitle {
+    color: var(--glee-pink);
+    font-style: italic;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+  }
+
+  .team-photo-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 3px solid rgba(255,215,0,0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .team-photo-container img {
+    width: 100%;
+    display: block;
+  }
+
+  .team-caption {
+    background: rgba(0,0,0,0.8);
+    padding: 1.5rem;
+    font-family: 'Bangers', cursive;
+    font-size: 1.3rem;
+    color: var(--glee-gold);
+    letter-spacing: 2px;
+    border-top: 2px solid var(--glee-red);
+  }
+
+  /* ===== SERVICES ===== */
+  .services-section {
+    padding: 5rem 2rem;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(196,30,58,0.08) 0%, transparent 60%),
+      var(--glee-dark);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 2px solid rgba(255,215,0,0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--glee-red), var(--glee-gold), var(--glee-pink));
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px) rotate(-1deg);
+    border-color: var(--glee-gold);
+    box-shadow: 0 12px 40px rgba(255,215,0,0.15);
+  }
+
+  .service-emoji {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    animation: wiggle 3s ease-in-out infinite;
+  }
+
+  .service-card:nth-child(2) .service-emoji { animation-delay: -0.5s; }
+  .service-card:nth-child(3) .service-emoji { animation-delay: -1s; }
+  .service-card:nth-child(4) .service-emoji { animation-delay: -1.5s; }
+  .service-card:nth-child(5) .service-emoji { animation-delay: -2s; }
+  .service-card:nth-child(6) .service-emoji { animation-delay: -2.5s; }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+  }
+
+  .service-title {
+    font-family: 'Bangers', cursive;
+    font-size: 1.4rem;
+    color: var(--glee-gold);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+  }
+
+  .service-song {
+    font-size: 0.85rem;
+    color: var(--glee-pink);
+    font-style: italic;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-desc {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials-section {
+    padding: 5rem 2rem;
+    background:
+      linear-gradient(180deg, var(--glee-dark) 0%, #16213e 100%);
+    text-align: center;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .testimonial-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,105,180,0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: left;
+    position: relative;
+  }
+
+  .testimonial-card::before {
+    content: '🎵';
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    font-size: 2rem;
+  }
+
+  .testimonial-quote {
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  .testimonial-author {
+    font-family: 'Bangers', cursive;
+    color: var(--glee-gold);
+    letter-spacing: 1px;
+  }
+
+  .testimonial-role {
+    font-size: 0.8rem;
+    color: var(--glee-pink);
+  }
+
+  /* ===== SONG LIST (Pricing) ===== */
+  .pricing-section {
+    padding: 5rem 2rem;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(30,144,255,0.08) 0%, transparent 50%),
+      var(--glee-dark);
+    text-align: center;
+  }
+
+  .setlist {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .setlist-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid rgba(255,215,0,0.1);
+    transition: all 0.3s ease;
+    border-radius: 8px;
+  }
+
+  .setlist-item:hover {
+    background: rgba(255,215,0,0.05);
+    transform: translateX(8px);
+  }
+
+  .setlist-num {
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    color: var(--glee-red);
+    min-width: 40px;
+  }
+
+  .setlist-song {
+    flex: 1;
+  }
+
+  .setlist-song-title {
+    font-family: 'Bangers', cursive;
+    color: var(--glee-gold);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+
+  .setlist-song-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .setlist-price {
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    color: var(--glee-pink);
+  }
+
+  /* ===== CHOIR ROOM (CTA) ===== */
+  .cta-section {
+    padding: 5rem 2rem;
+    text-align: center;
+    background:
+      var(--spotlight),
+      linear-gradient(180deg, #16213e 0%, var(--glee-dark) 100%);
+    position: relative;
+  }
+
+  .cta-section .glee-logo {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  .phone-number {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    color: var(--glee-pink);
+    margin-top: 1rem;
+    letter-spacing: 3px;
+  }
+
+  .disclaimer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.3);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .disclaimer a {
+    color: var(--glee-gold);
+    text-decoration: none;
+  }
+
+  /* ===== SPARKLE CURSOR TRAIL ===== */
+  .sparkle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.2rem;
+    z-index: 9999;
+    animation: sparkleAnim 0.8s ease-out forwards;
+  }
+  @keyframes sparkleAnim {
+    0% { opacity: 1; transform: scale(1) translateY(0); }
+    100% { opacity: 0; transform: scale(0) translateY(-30px) rotate(180deg); }
+  }
+
+  /* ===== FOOTER LOCKER STYLE ===== */
+  .footer {
+    background: #111;
+    padding: 2rem;
+    text-align: center;
+    border-top: 4px solid var(--glee-red);
+  }
+
+  .footer-text {
+    font-family: 'Bangers', cursive;
+    color: var(--glee-gold);
+    letter-spacing: 2px;
+    font-size: 1rem;
+  }
+
+  .footer-sub {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .fade-in:nth-child(2) { animation-delay: 0.1s; }
+  .fade-in:nth-child(3) { animation-delay: 0.2s; }
+  .fade-in:nth-child(4) { animation-delay: 0.3s; }
+  .fade-in:nth-child(5) { animation-delay: 0.4s; }
+  .fade-in:nth-child(6) { animation-delay: 0.5s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== CONFETTI BUTTON ===== */
+  .confetti-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 10000;
+  }
+
+  .confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    animation: confettiFall 3s ease-in forwards;
+  }
+
+  @keyframes confettiFall {
+    0% { opacity: 1; transform: translateY(-10vh) rotate(0deg); }
+    100% { opacity: 0; transform: translateY(110vh) rotate(720deg); }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MARQUEE -->
+<div class="marquee-banner">
+  <span class="marquee-text">
+    🎤 NOW ENROLLING: GLEE TOP TECHNOLOGY — WHERE EVERY TICKET IS A MUSICAL NUMBER 🎶 DON'T STOP BELIEVIN' IN YOUR NETWORK UPTIME 🎤 REGIONAL CHAMPIONS IN MANAGED IT HARMONY 🏆 FREE JAZZ HANDS WITH EVERY ONBOARDING 🎤 NOW ENROLLING: GLEE TOP TECHNOLOGY — WHERE EVERY TICKET IS A MUSICAL NUMBER 🎶 DON'T STOP BELIEVIN' IN YOUR NETWORK UPTIME 🎤 REGIONAL CHAMPIONS IN MANAGED IT HARMONY 🏆 FREE JAZZ HANDS WITH EVERY ONBOARDING 🎤
+  </span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="stage-light left"></div>
+  <div class="stage-light center"></div>
+  <div class="stage-light right"></div>
+  <div class="notes-container" id="notesContainer"></div>
+
+  <div class="logo-container">
+    <div class="glee-logo">
+      <span class="top-text">✨ WELCOME TO ✨</span>
+      GleeTop
+    </div>
+  </div>
+
+  <div class="tagline">🎤 TECHNOLOGY 🎤</div>
+  <p class="sub-tagline">Redlands' Premier Singing IT Company — We don't just fix your computers, we perform a full musical number about it.</p>
+
+  <a href="#services" class="cta-btn" onclick="launchConfetti()">🎶 BOOK A PERFORMANCE 🎶</a>
+</section>
+
+<!-- TEAM -->
+<section class="team-section" id="team">
+  <div class="section-title">🌟 THE NEW DIRECTIONS OF IT 🌟</div>
+  <div class="section-subtitle">Our weekly team meeting is technically a rehearsal</div>
+
+  <div class="team-photo-container">
+    <img src="/mnt/user-data/uploads/1775057830658_image.png" alt="The GleeTop Technology Glee Club — ready to sing your problems away" />
+    <div class="team-caption">📸 The GleeTop Glee Club — "We literally harmonize during standup meetings"</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="section-title">🎭 Our Greatest Hits (Services) 🎭</div>
+  <div class="section-subtitle">Every service comes with a mandatory musical number</div>
+
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <span class="service-emoji">🎤</span>
+      <div class="service-title">Don't Stop Believin' (In Your Backups)</div>
+      <div class="service-song">♪ "Hold on to that feelin'... that your data is safe" ♪</div>
+      <div class="service-desc">Our backup choir performs a nightly serenade to your servers while ensuring 3-2-1 backup compliance. Standing ovation guaranteed.</div>
+    </div>
+
+    <div class="service-card fade-in">
+      <span class="service-emoji">🛡️</span>
+      <div class="service-title">Somebody to Watch Over Me (Endpoint Security)</div>
+      <div class="service-song">♪ "Won't you tell him please to put on some MFA" ♪</div>
+      <div class="service-desc">24/7 security monitoring with dramatic musical stings every time we block a threat. Our SOC team literally gasps in harmony.</div>
+    </div>
+
+    <div class="service-card fade-in">
+      <span class="service-emoji">🔧</span>
+      <div class="service-title">Fix You (Helpdesk Support)</div>
+      <div class="service-song">♪ "When you try your best but your printer won't print" ♪</div>
+      <div class="service-desc">Submit a ticket, receive a ballad. Our Tier 1 techs will serenade you through a password reset. Tier 2 brings the full choreography.</div>
+    </div>
+
+    <div class="service-card fade-in">
+      <span class="service-emoji">☁️</span>
+      <div class="service-title">Head in the Clouds (M365 Migration)</div>
+      <div class="service-song">♪ "Take my hand, take my whole AD too" ♪</div>
+      <div class="service-desc">We'll migrate your entire organization to the cloud while performing an interpretive dance about Azure AD. Confetti at cutover.</div>
+    </div>
+
+    <div class="service-card fade-in">
+      <span class="service-emoji">📋</span>
+      <div class="service-title">We Are the Champions (Compliance)</div>
+      <div class="service-song">♪ "No time for breaches, 'cause we are the champions... of HIPAA" ♪</div>
+      <div class="service-desc">HIPAA, FTC Safeguards, WISP — we'll get you compliant AND compose an original fight song for your audit team.</div>
+    </div>
+
+    <div class="service-card fade-in">
+      <span class="service-emoji">🎹</span>
+      <div class="service-title">Piano Man (Network Orchestration)</div>
+      <div class="service-song">♪ "Sing us a song, you're the firewall man" ♪</div>
+      <div class="service-desc">Full network design and UniFi deployments. Our network architect plays actual piano while configuring your VLANs. It's a whole thing.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-title">⭐ Standing Ovations ⭐</div>
+  <div class="section-subtitle">Real reviews from real audience members (clients)</div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"I called about a printer jam and the entire IT team showed up in matching varsity jackets and performed a choreographed number while fixing it. My printer works AND I cried. 10/10."</div>
+      <div class="testimonial-author">— Local Manufacturing Company</div>
+      <div class="testimonial-role">Standing ovation at the copier</div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"They migrated our entire AD domain and when the final sync completed, confetti fell from the ceiling. I still don't know how they got confetti in our server room."</div>
+      <div class="testimonial-author">— Engineering Firm</div>
+      <div class="testimonial-role">Still finding confetti in the rack</div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"During our security awareness training, Byron rapped the entire NIST framework. My employees actually paid attention for once. The choreography was tight."</div>
+      <div class="testimonial-author">— Law Office</div>
+      <div class="testimonial-role">Compliance has never slapped this hard</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING / SETLIST -->
+<section class="pricing-section">
+  <div class="section-title">🎼 Tonight's Setlist (Pricing) 🎼</div>
+  <div class="section-subtitle">All plans include minimum 3 musical numbers per month</div>
+
+  <div class="setlist">
+    <div class="setlist-item">
+      <div class="setlist-num">01</div>
+      <div class="setlist-song">
+        <div class="setlist-song-title">🥉 "New Directions" — Starter Plan</div>
+        <div class="setlist-song-desc">Basic managed IT + one mandatory group number per quarter</div>
+      </div>
+      <div class="setlist-price">$$/mo</div>
+    </div>
+    <div class="setlist-item">
+      <div class="setlist-num">02</div>
+      <div class="setlist-song">
+        <div class="setlist-song-title">🥈 "Sectionals" — Growth Plan</div>
+        <div class="setlist-song-desc">Full stack IT + security + monthly ballad about your network health</div>
+      </div>
+      <div class="setlist-price">$$$/mo</div>
+    </div>
+    <div class="setlist-item">
+      <div class="setlist-num">03</div>
+      <div class="setlist-song">
+        <div class="setlist-song-title">🥇 "Nationals" — Enterprise Plan</div>
+        <div class="setlist-song-desc">Everything + dedicated vocal coach for your helpdesk + flash mob at your next board meeting</div>
+      </div>
+      <div class="setlist-price">$$$$$/mo</div>
+    </div>
+    <div class="setlist-item">
+      <div class="setlist-num">🌟</div>
+      <div class="setlist-song">
+        <div class="setlist-song-title">💎 "Mr. Schue's Pick" — Custom Encore</div>
+        <div class="setlist-song-desc">We write a fully original musical about your digital transformation journey. Tony-eligible.</div>
+      </div>
+      <div class="setlist-price">Call us</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="glee-logo" style="font-size: clamp(2.5rem, 6vw, 5rem);">GleeTop</div>
+  <div class="tagline" style="font-size: clamp(1rem, 2.5vw, 1.5rem);">TECHNOLOGY</div>
+  <p style="color: rgba(255,255,255,0.6); margin-top: 1rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+    The show choir of managed IT. Serving the Inland Empire with harmony, choreography, and 99.9% uptime.
+  </p>
+  <div class="phone-number">📞 1-800-GLEE-FIX</div>
+  <a href="#" class="cta-btn" onclick="launchConfetti()" style="margin-top: 1.5rem; font-size: 1.2rem;">
+    🎤 JOIN THE GLEE CLUB 🎤
+  </a>
+
+  <div class="disclaimer">
+    <p>🎭 Happy April Fools' Day from the real team at <a href="https://etop.tech">eTop Technology</a>! We promise we're actually very professional. Mostly. The varsity jackets are real though.</p>
+    <p style="margin-top: 0.5rem;">© 2026 GleeTop Technology — A Division of New Directions IT, LLC (not real) — Redlands, CA</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-text">🎤 "THE SHOW MUST GO ON... AND SO MUST YOUR UPTIME" 🎤</div>
+  <div class="footer-sub">etop.tech • Redlands, CA • We're actually very good at IT, we just also sing about it now</div>
+</div>
+
+<!-- CONFETTI CONTAINER -->
+<div class="confetti-container" id="confettiContainer"></div>
+
+<script>
+  // Floating music notes
+  const notes = ['♪', '♫', '♬', '♩', '🎵', '🎶', '🎤', '✨'];
+  const container = document.getElementById('notesContainer');
+
+  function createNote() {
+    const note = document.createElement('div');
+    note.className = 'music-note';
+    note.textContent = notes[Math.floor(Math.random() * notes.length)];
+    note.style.left = Math.random() * 100 + '%';
+    note.style.animationDuration = (4 + Math.random() * 4) + 's';
+    note.style.animationDelay = Math.random() * 2 + 's';
+    note.style.fontSize = (1 + Math.random() * 2) + 'rem';
+    container.appendChild(note);
+    setTimeout(() => note.remove(), 8000);
+  }
+
+  setInterval(createNote, 600);
+
+  // Sparkle cursor trail
+  const sparkleEmojis = ['✨', '🎵', '⭐', '🎤', '💫', '🎶'];
+  let sparkleThrottle = 0;
+  document.addEventListener('mousemove', (e) => {
+    if (Date.now() - sparkleThrottle < 100) return;
+    sparkleThrottle = Date.now();
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.textContent = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
+    sparkle.style.left = e.clientX + 'px';
+    sparkle.style.top = e.clientY + 'px';
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 800);
+  });
+
+  // Confetti launcher
+  function launchConfetti() {
+    const container = document.getElementById('confettiContainer');
+    const colors = ['#C41E3A', '#FFD700', '#FF69B4', '#1E90FF', '#FFF44F', '#77BC1F'];
+
+    for (let i = 0; i < 100; i++) {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random() * 100 + '%';
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.animationDelay = Math.random() * 0.5 + 's';
+      piece.style.animationDuration = (2 + Math.random() * 2) + 's';
+      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      piece.style.width = (5 + Math.random() * 10) + 'px';
+      piece.style.height = (5 + Math.random() * 10) + 'px';
+      container.appendChild(piece);
+      setTimeout(() => piece.remove(), 4000);
+    }
+  }
+
+  // Intersection observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
